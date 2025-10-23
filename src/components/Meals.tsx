@@ -21,6 +21,7 @@ export default function Meals({
   onChangeMealSelected,
   onChangeNumberOfPeople,
 }: MealsProps) {
+
   const total = data
     .filter((meal) => meal.selected)
     .reduce((sum, meal) => sum + meal.price * numberOfPeople, 0);
@@ -35,6 +36,7 @@ export default function Meals({
           <label htmlFor="nop" className="font-semibold text-black">
             Number of People
           </label>
+
           <input
             type="number"
             id="nop"
@@ -43,6 +45,7 @@ export default function Meals({
             value={numberOfPeople}
             onChange={(e) => onChangeNumberOfPeople(Number(e.target.value))}
           />
+          
         </div>
 
         {/* Meal listings */}
