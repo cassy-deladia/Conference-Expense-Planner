@@ -5,15 +5,15 @@ import Venue, { type VenueItem } from './components/Venue.tsx';
 
 import mealItems from './data/mealItems.ts'
 import venueItems from './data/venueItems.ts'
-// import type { AddonItem } from './components/Addons.tsx';
-// import Addons from './components/Addons.tsx';
+import type { AddonItem } from './components/Addons.tsx';
+import Addons from './components/Addons.tsx';
 import addonItems from './data/addonItems.ts'
 // import Summary from './components/Summary.tsx';
 
 function App() {
   // const [meals, setMeals] = useState<MealItem[]>(mealItems);
   const [venues, setVenues] = useState<VenueItem[]>(venueItems);
-  // const [addons, setAddons] = useState<AddonItem[]>(addonItems);
+  const [addons, setAddons] = useState<AddonItem[]>(addonItems);
 
   const [numberOfPeople, setNumberOfPeople] = useState(0);
   const [isHome, setIsHome] = useState(true);
@@ -75,6 +75,14 @@ function App() {
                 quantityOnChange={handleQuantityOnChange(setVenues)}
               />
             )}
+
+            {route === 'addons' && (
+              <Addons
+                data={addons}
+                quantityOnChange={handleQuantityOnChange(setAddons)}
+              />
+            )}
+
 
           </div>
         )}
