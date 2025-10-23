@@ -1,21 +1,13 @@
 import { useState } from 'react';
 import Home from './components/Home.tsx'
+import NavBar from './components/NavBar.tsx';
 
 function App() {
   const [isHome, setIsHome] = useState(true);
+  const [route, setRoute] = useState<'venue' | 'addons' | 'meals'>('venue');
 
   const handleIsHomeChange = () => {
     setIsHome(e => !e);
-  }
-
-  const handleQuantityOnChange = (setter: React.Dispatch<React.SetStateAction<any[]>>) => {
-    return (index: number, value: number) => {
-      setter(prev => {
-        const newItem = [...prev]
-        newItem[index].quantity = value;
-        return newItem;
-      });
-    }
   }
 
   return (
@@ -23,6 +15,24 @@ function App() {
 
       <div className="relative z-10">
         {isHome && <Home onClick={handleIsHomeChange} />}
+
+        {!isHome && (
+          <div className="min-h-screen">
+            <NavBar
+              onClick={handleIsHomeChange}
+              toAddons={() => {
+                setRoute('addons')
+              }}
+              toVenue={() => {
+                setRoute('venue')
+              }}
+              toMeals={() => {
+                setRoute('meals')
+              }}
+              toSummary={() => () => { }}
+            />
+          </div>
+        )}
 
       </div>
     </div>
