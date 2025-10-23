@@ -7,7 +7,7 @@ import mealItems from './data/mealItems.ts'
 import venueItems from './data/venueItems.ts'
 import type { AddonItem } from './components/Addons.tsx';
 import Addons from './components/Addons.tsx';
-import addonItems from './data/addonItems.ts'
+import addonItems from './data/addons.ts'
 import Meals, { type MealItem } from './components/Meals.tsx';
 import Summary from './components/Summary.tsx';
 
