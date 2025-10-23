@@ -13,7 +13,7 @@ export default function MealListing({ meal, index, onChangeMealSelected }: MealL
 
   return (
     <div
-      onClick={handleClick}
+      onClick={() => handleClick()}
       className={`flex items-center gap-4 px-4 py-3 min-w-40 rounded-lg cursor-pointer border transition-all 
         ${meal.selected
           ? "bg-white text-black border-white"
@@ -24,7 +24,7 @@ export default function MealListing({ meal, index, onChangeMealSelected }: MealL
         id={`check${index}`}
         type="checkbox"
         checked={meal.selected}
-        readOnly
+        onChange={(e) => e.stopPropagation()}
         className="w-4 h-4 accent-white cursor-pointer"
       />
       <div>

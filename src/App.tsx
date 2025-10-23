@@ -9,7 +9,7 @@ import type { AddonItem } from './components/Addons.tsx';
 import Addons from './components/Addons.tsx';
 import addonItems from './data/addonItems.ts'
 import Meals, { type MealItem } from './components/Meals.tsx';
-// import Summary from './components/Summary.tsx';
+import Summary from './components/Summary.tsx';
 
 function App() {
   const [meals, setMeals] = useState<MealItem[]>(mealItems);
@@ -67,7 +67,7 @@ function App() {
               toMeals={() => {
                 setRoute('meals')
               }}
-              toSummary={() => () => { }}
+              toSummary={() => toggleSummary()}
             />
 
             {route === 'venue' && (
@@ -92,6 +92,14 @@ function App() {
                 onChangeNumberOfPeople={setNumberOfPeople}
               />
             )}
+
+            {showSummary && <Summary
+              toggle={toggleSummary}
+              venues={venueItems}
+              addons={addonItems}
+              meals={mealItems}
+              mealsNoOfPeople={numberOfPeople}
+            />}
 
 
           </div>
