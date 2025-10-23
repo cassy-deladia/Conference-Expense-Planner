@@ -3,8 +3,8 @@ import Home from './components/Home.tsx'
 import NavBar from './components/NavBar.tsx';
 import Venue, { type VenueItem } from './components/Venue.tsx';
 
-import mealItems from './data/mealItems.ts'
-import venueItems from './data/venueItems.ts'
+import mealItems from './data/meals.ts'
+import venueItems from './data/venues.ts'
 import type { AddonItem } from './components/Addons.tsx';
 import Addons from './components/Addons.tsx';
 import addonItems from './data/addons.ts'
