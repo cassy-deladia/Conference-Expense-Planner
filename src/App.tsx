@@ -8,10 +8,11 @@ import venueItems from './data/venueItems.ts'
 import type { AddonItem } from './components/Addons.tsx';
 import Addons from './components/Addons.tsx';
 import addonItems from './data/addonItems.ts'
+import Meals, { type MealItem } from './components/Meals.tsx';
 // import Summary from './components/Summary.tsx';
 
 function App() {
-  // const [meals, setMeals] = useState<MealItem[]>(mealItems);
+  const [meals, setMeals] = useState<MealItem[]>(mealItems);
   const [venues, setVenues] = useState<VenueItem[]>(venueItems);
   const [addons, setAddons] = useState<AddonItem[]>(addonItems);
 
@@ -24,13 +25,13 @@ function App() {
     setShowSummary(e => !e);
   }
 
-  // const handleMealChange = (index: number) => {
-  //   setMeals(prevmeals => {
-  //     const newmeals = [...prevmeals];
-  //     newmeals[index].selected = !newmeals[index].selected;
-  //     return newmeals;
-  //   })
-  // }
+  const handleMealChange = (index: number) => {
+    setMeals(prevmeals => {
+      const newmeals = [...prevmeals];
+      newmeals[index].selected = !newmeals[index].selected;
+      return newmeals;
+    })
+  }
 
   const handleIsHomeChange = () => {
     setIsHome(e => !e);
@@ -80,6 +81,15 @@ function App() {
               <Addons
                 data={addons}
                 quantityOnChange={handleQuantityOnChange(setAddons)}
+              />
+            )}
+
+            {route === 'meals' && (
+              <Meals
+                data={meals}
+                numberOfPeople={numberOfPeople}
+                onChangeMealSelected={handleMealChange}
+                onChangeNumberOfPeople={setNumberOfPeople}
               />
             )}
 
